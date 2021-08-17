@@ -71,8 +71,45 @@ document.addEventListener("DOMContentLoader", () => {
       newWin: 0,
     },
     methods: {
-      fixedSpin: () => {},
-      randomSpin: () => {},
+      fixedSpin: () => {
+        this.spinOneCount = this.spinTwoCount = this.spinThreeCount = 0;
+
+        for (let tableRow of document.querySelectorAll(
+          ". payout table tbody tr"
+        )) {
+          tableRow.style.color = "green";
+          tableRow.style.backgroundColor = "red";
+        }
+        this.fIsSpinning = true;
+        this.lineTop = false;
+        this.lineCenter = false;
+        this.lineBottom = false;
+      },
+      randomSpin: () => {
+        if (this.currentBalance > 0) {
+          this.currentBalance--;
+          this.spinOneCount = this.spinTwoCount = this.spinThreeCount = 0;
+          self.rIsSpinning = true;
+          this.spinOne(Math.floor(Math.random() * 100 * 200));
+          this.spinTow(Math.floor(Math.random() * 100 * 250));
+          this.spinThree(Math.floor(Math.random() * 100 * 300));
+
+          for (tableRow of document.querySelectorAll(
+            ".payouts table tbody tr"
+          )) {
+            tableRow.style.color = "green";
+            tableRow.style.backgroundColor = "red";
+          }
+          this.lineTop = false;
+          this.lineCenter = false;
+          this.lineBottom = false;
+        } else {
+          this.alertTitle = "Sorry";
+          this.alertText = "You ran out of balance, add some !";
+          this.alertButton = "Sure, let me add coins";
+          this.balanceAlert = true;
+        }
+      },
       spinOne: () => {},
       spinTwo: () => {},
       spinThree: () => {},
