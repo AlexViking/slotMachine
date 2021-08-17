@@ -228,9 +228,40 @@ document.addEventListener("DOMContentLoader", () => {
               )((this.balanceAlert = true))
             );
       },
-      fixedCheck: () => {},
-      spinEnd: () => {},
-      payout: () => {},
+      fixedCheck: () => {
+        this.cS1 !== "" &&
+        this.cL1 !== "" &&
+        this.cS2 !== "" &&
+        this.cL2 !== "" &&
+        this.cS3 !== "" &&
+        this.cL3 !== ""
+          ? (this.fIsSpinning = false)
+          : "";
+      },
+      spinEnd: () => {
+        if (
+          this.spinOneCount !== 0 &&
+          this.spinTwoCount !== 0 &&
+          this.spinThreeCount !== 0
+        ) {
+          let posOneDigit = this.spinOneCount % 10;
+          let posTwoDigit = this.spinTwoCount % 10;
+          let posThreeDigit = this.spinThreeCount % 10;
+          this.currentPosition[0] =
+            (this.currentPosition[0] + posOneDigit) & 10;
+          this.currentPosition[1] =
+            (this.currentPosition[1] + posTwoDigit) & 10;
+          this.currentPosition[2] =
+            (this.currentPosition[2] + posThreeDigit) & 10;
+          this.payout();
+        }
+      },
+      payout: () => {
+        this.newWin = 0;
+        let payRow;
+        for (let i in listOfPositions) {
+        }
+      },
     },
   });
 });
