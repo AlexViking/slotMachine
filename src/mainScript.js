@@ -259,7 +259,31 @@ document.addEventListener("DOMContentLoader", () => {
       payout: () => {
         this.newWin = 0;
         let payRow;
-        for (let i in listOfPositions) {
+        let list = listOfPositions;
+        for (let i in list) {
+          if (list[i].pos === this.currentPosition.join("")) {
+            for (let j of list[i].det) {
+              this.newWin += j.prize;
+              for (let comb of this.payouts) {
+                if (comb.combination === j.text) {
+                  payRow = document.querySelectorAll(".payouts table tbody tr")[
+                    this.payouts.indexOf(comb)
+                  ];
+                  payRow.style.color = "#fff";
+                  payRow.style.backgroundColor = "green";
+                  if (j.line === "top") {
+                    this.lineTop = true;
+                  } else if (j.line === "center") {
+                    this.lineCenter = true;
+                  } else {
+                    this.lineBottom = true;
+                  }
+                }
+              }
+            }
+            this.playerWins += this.newWin;
+            this.currentBalance += this.newWin;
+          }
         }
       },
     },
