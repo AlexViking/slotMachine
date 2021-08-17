@@ -19,7 +19,57 @@
   </head>
   <body>
     <!-- vue -->
-    <v-app id="app"> </v-app>
+    <v-app id="app">
+      <v-container>
+        <v-layout row wrap>
+          <v-flex xs12 sm6 md7>
+            <!-- emmet = div#reel$.reel*3>img[v-for="pic in img" :src="pic.src" :class="pic.id" alt=""]+p[class="reel-line $" v-show="line"]*3 -->
+            <div id="reel1" class="reel">
+              <img
+                src=""
+                alt=""
+                v-for="pic in img"
+                :src="pic.src"
+                :class="pic.id"
+              />
+              <p class="reel-line 1" v-show="line"></p>
+              <p class="reel-line 2" v-show="line"></p>
+              <p class="reel-line 3" v-show="line"></p>
+            </div>
+            <div id="reel2" class="reel">
+              <img
+                src=""
+                alt=""
+                v-for="pic in img"
+                :src="pic.src"
+                :class="pic.id"
+              />
+              <p class="reel-line 1" v-show="line"></p>
+              <p class="reel-line 2" v-show="line"></p>
+              <p class="reel-line 3" v-show="line"></p>
+            </div>
+            <div id="reel3" class="reel">
+              <img
+                src=""
+                alt=""
+                v-for="pic in img"
+                :src="pic.src"
+                :class="pic.id"
+              />
+              <p class="reel-line 1" v-show="line"></p>
+              <p class="reel-line 2" v-show="line"></p>
+              <p class="reel-line 3" v-show="line"></p>
+            </div>
+            <v-flex xs12 sm12 md12>
+              <p class="wins-area">text : <span>{{ playerWins}}</span></p>
+              <p class="wins-area">text : <span>{{ newWins}}</span></p>
+            </v-flex>
+          </v-flex>
+          <v-flex xs12 sm6 md5></v-flex>
+        </v-layout>
+        <v-layout row wrap></v-layout>
+      </v-container>
+    </v-app>
     <!-- end vue -->
 
     <!-- script -->
