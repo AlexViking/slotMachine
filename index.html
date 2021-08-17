@@ -101,6 +101,81 @@
                 Reset reels</v-btn
               >
             </div>
+            <v-layout row wrap v-show="fixVis">
+              <v-flex xs12 sm6 md4>
+                <h3 class="pd-2">reel one setup :</h3>
+                <v-select
+                  :items="symbolList"
+                  label="Symbol"
+                  solo
+                  :rules="[a => !!a || 'required']"
+                  @change="fixedCheck()"
+                  v-model="cS1"
+                ></v-select>
+                <v-select
+                  :items="symbolLanding"
+                  label="Landing"
+                  solo
+                  :rules="[a => !!a || 'required']"
+                  @change="fixedCheck()"
+                  v-model="cL1"
+                ></v-select>
+              </v-flex>
+              <v-flex xs12 sm6 md4>
+                <h3 class="pd-2">reel two setup :</h3>
+                <v-select
+                  :items="symbolList"
+                  label="Symbol"
+                  solo
+                  :rules="[a => !!a || 'required']"
+                  @change="fixedCheck()"
+                  v-model="cS2"
+                ></v-select>
+                <v-select
+                  :items="symbolLanding"
+                  label="Landing"
+                  solo
+                  :rules="[a => !!a || 'required']"
+                  @change="fixedCheck()"
+                  v-model="cL2"
+                ></v-select>
+              </v-flex>
+              <v-flex xs12 sm6 md4>
+                <h3 class="pd-2">reel three setup :</h3>
+                <v-select
+                  :items="symbolList"
+                  label="Symbol"
+                  solo
+                  :rules="[a => !!a || 'required']"
+                  @change="fixedCheck()"
+                  v-model="cS3"
+                ></v-select>
+                <v-select
+                  :items="symbolLanding"
+                  label="Landing"
+                  solo
+                  :rules="[a => !!a || 'required']"
+                  @change="fixedCheck()"
+                  v-model="cL3"
+                ></v-select>
+              </v-flex>
+              <v-flex xs12 sm12 md12>
+                <v-btn
+                  color="success"
+                  @click="fixedSpin()"
+                  :disabled="fIsSpinning"
+                >
+                  Fixed</v-btn
+                >
+                <v-btn
+                  color="success"
+                  @click="resetReels()"
+                  :disabled="fIsSpinning"
+                >
+                  Reset</v-btn
+                >
+              </v-flex>
+            </v-layout>
           </v-flex>
           <v-flex xs12 sm6 md5 class="balance-area">
             <v-layout row wrap>
