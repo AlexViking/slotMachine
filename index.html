@@ -93,9 +93,38 @@
               >
                 Random
               </v-btn>
+              <v-btn
+                class="success"
+                @click="resetReels()"
+                :disabled="rIsSpinning"
+              >
+                Reset reels</v-btn
+              >
             </div>
           </v-flex>
-          <v-flex xs12 sm6 md5 class="balance-area"></v-flex>
+          <v-flex xs12 sm6 md5 class="balance-area">
+            <v-layout row wrap>
+              <v-flex xs12 sm12 md12 class="pa-2 md-2">
+                <h3>Insert Coins ( max: 5000 )</h3>
+              </v-flex>
+              <v-flex xs12 sm12 md12 class="pa-2 add-balance">
+                <h3>Balance :</h3>
+                <v-text-field
+                  append-outer-icon="done_all"
+                  @click:append-outer="addBalance"
+                  label="Enter balance."
+                  v-mode="coins"
+                  type="number"
+                  :rule="[a => a <= 5000 || ' Type in a number. (max 5000)']"
+                  @keyup.enter="addBalance"
+                  clearable
+                  color="#999"
+                  solo
+                ></v-text-field>
+              </v-flex>
+              <v-flex xs12 sm12 md12 class="pa-2 md-2"></v-flex>
+            </v-layout>
+          </v-flex>
         </v-layout>
       </v-container>
     </v-app>
