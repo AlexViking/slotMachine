@@ -210,8 +210,24 @@ document.addEventListener("DOMContentLoader", () => {
         this.lineCenter = false;
         this.lineBottom = false;
       },
-      modeSelector: () => {},
-      addBalance: () => {},
+      modeSelector: () => {
+        this.gameMode === "random"
+          ? (this.randVis = true)((this.fixVis = false))
+          : (this.randVis = false)((this.fixVis = true));
+      },
+      addBalance: () => {
+        this.coins > 0 &&
+        this.coins <= 5000 &&
+        Number.isInteger(Number(this.coins))
+          ? (this.addCoinsError = false)(
+              (this.currentBalance = Number(this.coins))
+            )
+          : (this.alertTitle = "Wrong input")(
+              (this.alertText = "Only Integers max 5000")(
+                (this.alertButton = "Ok")
+              )((this.balanceAlert = true))
+            );
+      },
       fixedCheck: () => {},
       spinEnd: () => {},
       payout: () => {},
