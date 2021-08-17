@@ -185,7 +185,31 @@ document.addEventListener("DOMContentLoader", () => {
           }
         }, this.spinTime);
       },
-      resetReels: () => {},
+      resetReels: () => {
+        //
+        document.getElementsByClassName("pic one")[0].style.top = "-25%";
+        document.getElementsByClassName("pic two")[0].style.top = "25%";
+        document.getElementsByClassName("pic three")[0].style.top = "75%";
+        document.getElementsByClassName("pic four")[0].style.top = "125%";
+        document.getElementsByClassName("pic five")[0].style.top = "175%";
+        //
+        document.getElementsByClassName("pic one")[1].style.top = "-25%";
+        document.getElementsByClassName("pic two")[1].style.top = "25%";
+        document.getElementsByClassName("pic three")[1].style.top = "75%";
+        document.getElementsByClassName("pic four")[1].style.top = "125%";
+        document.getElementsByClassName("pic five")[1].style.top = "175%";
+        //
+        document.getElementsByClassName("pic one")[2].style.top = "-25%";
+        document.getElementsByClassName("pic two")[2].style.top = "25%";
+        document.getElementsByClassName("pic three")[2].style.top = "75%";
+        document.getElementsByClassName("pic four")[2].style.top = "125%";
+        document.getElementsByClassName("pic five")[2].style.top = "175%";
+
+        this.currentPosition = [0, 0, 0];
+        this.lineTop = false;
+        this.lineCenter = false;
+        this.lineBottom = false;
+      },
       modeSelector: () => {},
       addBalance: () => {},
       fixedCheck: () => {},
