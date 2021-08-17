@@ -1,0 +1,127 @@
+#app .container {
+  background-color: #fff;
+}
+.reel {
+  display: inline-block;
+  width: 100%;
+  max-width: 200px;
+  position: relative;
+  height: 344px;
+  margin: 0px 5px;
+  overflow: hidden;
+  z-index: 20;
+  box-shadow: 0px 0px 4px 0px #b7b7b7;
+}
+.reel img {
+  display: block;
+  margin: 0 auto;
+  padding: 25.5px 30px;
+  position: absolute;
+  background-color: #f3f3f3;
+}
+.reel img.one {
+  top: -25%;
+}
+.reel img.two {
+  top: 25%;
+}
+.reel img.three {
+  top: 75%;
+}
+.reel img.four {
+  top: 125%;
+}
+.reel img.five {
+  top: 175%;
+}
+.reel-line {
+  display: block;
+  position: absolute;
+  height: 3px;
+  width: 100%;
+  background-color: #ff3f3f;
+  z-index: 5;
+}
+.reel-line.one {
+  top: 25%;
+}
+.reel-line.two {
+  top: 50%;
+}
+.reel-line.three {
+  top: 75%;
+}
+.wins-area {
+  display: block;
+  float: left;
+  width: 46%;
+  margin: 10px 1%;
+  padding: 20px 20px 20px 20px;
+  background-color: #f44336;
+  color: #fff;
+  font-size: 20px;
+}
+.wins-area span {
+  color: #fff;
+  font-size: 20px;
+  display: block;
+  float: right;
+  margin: 0px 30px 0px 20px;
+}
+.balance-area {
+  background-color: #f44336;
+  padding: 10px;
+  margin: 10px 0px;
+}
+.balance-area h2 {
+  color: #fff;
+}
+.add-balance h3 {
+  color: #fff;
+  font-weight: 400;
+  margin: 0px 0px 10px 0px;
+}
+.add-balance .error--text {
+  color: #fff !important;
+  font-size: 13px;
+  line-height: 15px !important;
+}
+.add-balance .v-input__append-outer .v-icon {
+  background-color: #fff;
+  padding: 8px;
+  margin: 0px 0px 0px 10px;
+  font-size: 30px;
+  border-radius: 3px;
+  height: 48px;
+}
+.balance-amuont {
+  background-color: #f44336;
+  margin: 0px;
+  text-align: center;
+  font-size: 24px;
+  color: #fff;
+}
+@media screen and (max-width: 480px) {
+  .reel {
+    width: 32.33%;
+    float: left;
+    height: 216px;
+    margin: 0px 0.5%;
+  }
+  .reel img {
+    padding: 10px;
+    width: 100%;
+  }
+  .v-toolbar__title {
+    font-size: 18px;
+  }
+  .wins-area {
+    padding: 10px 10px;
+    font-size: 16px;
+    width: 48%;
+  }
+  .wins-area span {
+    font-size: 16px;
+    margin: 0px 15px 0px 15px;
+  }
+}
