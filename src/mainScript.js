@@ -112,7 +112,6 @@ document.addEventListener("DOMContentLoader", () => {
       },
       spinOne: (spinsCount) => {
         let reelPics = document.querySelectorAll("#reel1 .pic");
-
         const self = this;
         let currentSpinsCount = 0;
         let anim = setInterval(() => {
@@ -136,8 +135,56 @@ document.addEventListener("DOMContentLoader", () => {
           }
         }, this.spinTime);
       },
-      spinTwo: () => {},
-      spinThree: () => {},
+      spinTwo: (spinsCount) => {
+        let reelPics = document.querySelectorAll("#reel2 .pic");
+        const self = this;
+        let currentSpinsCount = 0;
+        let anim = setInterval(() => {
+          if (currentSpinsCount < spinsCount) {
+            for (let i of reelPics) {
+              if (i.offsetTop === self.reelHeight * 1.75) {
+                i.style.top = -self.reelHeight * 0.5 + "px";
+                i.style.zIndex = "-2";
+              } else {
+                i.style.zIndex = "1";
+                self.reelPos = i.offsetTop + self.reelHeight * 0.25;
+                i.style.top = self.reelPos + "px";
+              }
+            }
+            currentSpinsCount++;
+          } else {
+            self.spinsOneCount = spinsCount;
+            clearInterval(anim);
+            currentSpinsCount = 0;
+            self.spinEnd();
+          }
+        }, this.spinTime);
+      },
+      spinThree: (spinsCount) => {
+        let reelPics = document.querySelectorAll("#reel3 .pic");
+        const self = this;
+        let currentSpinsCount = 0;
+        let anim = setInterval(() => {
+          if (currentSpinsCount < spinsCount) {
+            for (let i of reelPics) {
+              if (i.offsetTop === self.reelHeight * 1.75) {
+                i.style.top = -self.reelHeight * 0.5 + "px";
+                i.style.zIndex = "-2";
+              } else {
+                i.style.zIndex = "1";
+                self.reelPos = i.offsetTop + self.reelHeight * 0.25;
+                i.style.top = self.reelPos + "px";
+              }
+            }
+            currentSpinsCount++;
+          } else {
+            self.spinsOneCount = spinsCount;
+            clearInterval(anim);
+            currentSpinsCount = 0;
+            self.spinEnd();
+          }
+        }, this.spinTime);
+      },
       resetReels: () => {},
       modeSelector: () => {},
       addBalance: () => {},
