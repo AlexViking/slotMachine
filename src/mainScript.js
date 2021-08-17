@@ -47,6 +47,18 @@ document.addEventListener("DOMContentLoader", () => {
       playerWins: 0,
       newWin: 0,
     },
-    methods: {},
+    methods: {
+      fixedSpin: () => {},
+      randomSpin: () => {},
+      spinOne: () => {},
+      spinTwo: () => {},
+      spinThree: () => {},
+      resetReels: () => {},
+      modeSelector: () => {},
+      addBalance: () => {},
+      fixedCheck: () => {},
+      spinEnd: () => {},
+      payout: () => {},
+    },
   });
 });
