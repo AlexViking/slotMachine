@@ -78,7 +78,25 @@
             >
           </v-flex>
         </v-layout>
-        <v-layout row wrap></v-layout>
+        <v-layout row wrap>
+          <v-flex xs12 sm6 md7>
+            <h3>Debug area</h3>
+            <v-radio-group v-model="gameMode" @change="ModeSelector()">
+              <v-radio label="random" :value="rMode" color="#333"></v-radio>
+              <v-radio label="random" :value="fMode" color="#666"></v-radio>
+            </v-radio-group>
+            <div id="random-container" v-show="randVis">
+              <v-btn
+                color="success"
+                @click="randomSpin()"
+                :disabled="rIsSpinning"
+              >
+                Random
+              </v-btn>
+            </div>
+          </v-flex>
+          <v-flex xs12 sm6 md5 class="balance-area"></v-flex>
+        </v-layout>
       </v-container>
     </v-app>
     <!-- end vue -->
