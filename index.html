@@ -65,7 +65,18 @@
               <p class="wins-area">text : <span>{{ newWins}}</span></p>
             </v-flex>
           </v-flex>
-          <v-flex xs12 sm6 md5></v-flex>
+          <v-flex xs12 sm6 md5>
+            <v-data-table
+              :item="payouts"
+              class="elevation-1 payouts"
+              :headers="payoutsHeaders"
+              hide-action
+              ><template v-slot:item="props"
+                ><td>{{ props.item.combination}}</td>
+                <td class="text-xs-right">{{ props.item.prize }}</td></template
+              ></v-data-table
+            >
+          </v-flex>
         </v-layout>
         <v-layout row wrap></v-layout>
       </v-container>
