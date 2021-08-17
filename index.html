@@ -32,9 +32,9 @@
                 :src="pic.src"
                 :class="pic.id"
               />
-              <p class="reel-line 1" v-show="line"></p>
-              <p class="reel-line 2" v-show="line"></p>
-              <p class="reel-line 3" v-show="line"></p>
+              <p class="reel-line one" v-show="lineTop"></p>
+              <p class="reel-line two" v-show="lineCenter"></p>
+              <p class="reel-line three" v-show="lineBottom"></p>
             </div>
             <div id="reel2" class="reel">
               <img
@@ -44,9 +44,9 @@
                 :src="pic.src"
                 :class="pic.id"
               />
-              <p class="reel-line 1" v-show="line"></p>
-              <p class="reel-line 2" v-show="line"></p>
-              <p class="reel-line 3" v-show="line"></p>
+              <p class="reel-line one" v-show="lineTop"></p>
+              <p class="reel-line two" v-show="lineCenter"></p>
+              <p class="reel-line three" v-show="lineBottom"></p>
             </div>
             <div id="reel3" class="reel">
               <img
@@ -56,9 +56,9 @@
                 :src="pic.src"
                 :class="pic.id"
               />
-              <p class="reel-line 1" v-show="line"></p>
-              <p class="reel-line 2" v-show="line"></p>
-              <p class="reel-line 3" v-show="line"></p>
+              <p class="reel-line one" v-show="lineTop"></p>
+              <p class="reel-line two" v-show="lineCenter"></p>
+              <p class="reel-line three" v-show="lineBottom"></p>
             </div>
             <v-flex xs12 sm12 md12>
               <p class="wins-area">text : <span>{{ playerWins}}</span></p>
