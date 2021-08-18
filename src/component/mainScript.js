@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoader", () => {
+document.addEventListener("DOMContentLoaded", () => {
   // Vue main app component
   var app = new Vue({
     el: "#app",
@@ -8,13 +8,13 @@ document.addEventListener("DOMContentLoader", () => {
       spinOneCount: 0,
       spinTwoCount: 0,
       spinThreeCount: 0,
-      spinTime: 5,
-      img: [
-        { id: "pic one", src: "img/3xBAR.png" },
-        { id: "pic two", src: "img/BAR.png" },
-        { id: "pic three", src: "img/2xBAR.png" },
-        { id: "pic four", src: "img/7.png" },
-        { id: "pic five", src: "img/Cherry.png" },
+      spinTime: 10,
+      pics: [
+        { id: "pic one", src: "src/pics/3xBAR.png" },
+        { id: "pic two", src: "src/pics/BAR.png" },
+        { id: "pic three", src: "src/pics/2xBAR.png" },
+        { id: "pic four", src: "src/pics/7.png" },
+        { id: "pic five", src: "src/pics/Cherry.png" },
       ],
       balance: 100,
       rIsSpinning: false,
@@ -43,8 +43,8 @@ document.addEventListener("DOMContentLoader", () => {
       cL3: "",
       payoutsHeaders: [
         {
-          text: "combination",
-          align: "center",
+          text: "Combination",
+          align: "left",
           sortable: false,
           value: "calories",
         },
@@ -56,26 +56,26 @@ document.addEventListener("DOMContentLoader", () => {
         },
       ],
       payouts: [
-        { combination: "3 Cherry on bottom line", price: 4000 },
-        { combination: "3 Cherry on top line", price: 2000 },
-        { combination: "3 Cherry on Center line", price: 1000 },
-        { combination: "3 7 on any line", price: 150 },
-        { combination: "any combination Cherry & 7 on any line", price: 75 },
-        { combination: "3 3xBar on any line", price: 50 },
-        { combination: "3 2xBar on any line", price: 20 },
-        { combination: "3 1xBar on any line", price: 10 },
-        { combination: "any combination Bar on any line", price: 5 },
+        { combination: "3 Cherry on bottom line", prize: 4000 },
+        { combination: "3 Cherry on top line", prize: 2000 },
+        { combination: "3 Cherry on Center line", prize: 1000 },
+        { combination: "3 7 on any line", prize: 150 },
+        { combination: "any combination Cherry & 7 on any line", prize: 75 },
+        { combination: "3 3xBar on any line", prize: 50 },
+        { combination: "3 2xBar on any line", prize: 20 },
+        { combination: "3 1xBar on any line", prize: 10 },
+        { combination: "any combination Bar on any line", prize: 5 },
       ],
       currentPosition: [0, 0, 0],
       playerWins: 0,
       newWin: 0,
     },
     methods: {
-      fixedSpin: () => {
+      fixedSpin: function () {
         this.spinOneCount = this.spinTwoCount = this.spinThreeCount = 0;
 
         for (let tableRow of document.querySelectorAll(
-          ". payout table tbody tr"
+          ".payouts table tbody tr"
         )) {
           tableRow.style.color = "green";
           tableRow.style.backgroundColor = "red";
@@ -84,8 +84,14 @@ document.addEventListener("DOMContentLoader", () => {
         this.lineTop = false;
         this.lineCenter = false;
         this.lineBottom = false;
+        //
+        if (
+          (this.cS1 === "CHERRY" && this.cL1 === "Top") ||
+          (this.cS1 === "3xBAR" && this.cL1 === "Bottom")
+        ) {
+        }
       },
-      randomSpin: () => {
+      randomSpin: function () {
         if (this.currentBalance > 0) {
           this.currentBalance--;
           this.spinOneCount = this.spinTwoCount = this.spinThreeCount = 0;
@@ -110,7 +116,7 @@ document.addEventListener("DOMContentLoader", () => {
           this.balanceAlert = true;
         }
       },
-      spinOne: (spinsCount) => {
+      spinOne: function (spinsCount) {
         let reelPics = document.querySelectorAll("#reel1 .pic");
         const self = this;
         let currentSpinsCount = 0;
@@ -128,14 +134,14 @@ document.addEventListener("DOMContentLoader", () => {
             }
             currentSpinsCount++;
           } else {
-            self.spinsOneCount = spinsCount;
+            self.spinOneCount = spinsCount;
             clearInterval(anim);
             currentSpinsCount = 0;
             self.spinEnd();
           }
         }, this.spinTime);
       },
-      spinTwo: (spinsCount) => {
+      spinTwo: function (spinsCount) {
         let reelPics = document.querySelectorAll("#reel2 .pic");
         const self = this;
         let currentSpinsCount = 0;
@@ -153,14 +159,14 @@ document.addEventListener("DOMContentLoader", () => {
             }
             currentSpinsCount++;
           } else {
-            self.spinsOneCount = spinsCount;
+            self.spinTwoCount = spinsCount;
             clearInterval(anim);
             currentSpinsCount = 0;
             self.spinEnd();
           }
         }, this.spinTime);
       },
-      spinThree: (spinsCount) => {
+      spinThree: function (spinsCount) {
         let reelPics = document.querySelectorAll("#reel3 .pic");
         const self = this;
         let currentSpinsCount = 0;
@@ -178,14 +184,14 @@ document.addEventListener("DOMContentLoader", () => {
             }
             currentSpinsCount++;
           } else {
-            self.spinsOneCount = spinsCount;
+            self.spinThreeCount = spinsCount;
             clearInterval(anim);
             currentSpinsCount = 0;
             self.spinEnd();
           }
         }, this.spinTime);
       },
-      resetReels: () => {
+      resetReels: function () {
         //
         document.getElementsByClassName("pic one")[0].style.top = "-25%";
         document.getElementsByClassName("pic two")[0].style.top = "25%";
@@ -210,12 +216,12 @@ document.addEventListener("DOMContentLoader", () => {
         this.lineCenter = false;
         this.lineBottom = false;
       },
-      modeSelector: () => {
+      modeSelector: function () {
         this.gameMode === "random"
           ? (this.randVis = true)((this.fixVis = false))
           : (this.randVis = false)((this.fixVis = true));
       },
-      addBalance: () => {
+      addBalance: function () {
         this.coins > 0 &&
         this.coins <= 5000 &&
         Number.isInteger(Number(this.coins))
@@ -228,7 +234,7 @@ document.addEventListener("DOMContentLoader", () => {
               )((this.balanceAlert = true))
             );
       },
-      fixedCheck: () => {
+      fixedCheck: function () {
         this.cS1 !== "" &&
         this.cL1 !== "" &&
         this.cS2 !== "" &&
@@ -236,9 +242,9 @@ document.addEventListener("DOMContentLoader", () => {
         this.cS3 !== "" &&
         this.cL3 !== ""
           ? (this.fIsSpinning = false)
-          : "";
+          : null;
       },
-      spinEnd: () => {
+      spinEnd: function () {
         if (
           this.spinOneCount !== 0 &&
           this.spinTwoCount !== 0 &&
@@ -253,10 +259,12 @@ document.addEventListener("DOMContentLoader", () => {
             (this.currentPosition[1] + posTwoDigit) & 10;
           this.currentPosition[2] =
             (this.currentPosition[2] + posThreeDigit) & 10;
+          this.rIsSpinning = false;
+          this.fIsSpinning = false;
           this.payout();
         }
       },
-      payout: () => {
+      payout: function () {
         this.newWin = 0;
         let payRow;
         let list = listOfPositions;
